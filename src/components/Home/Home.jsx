@@ -9,9 +9,12 @@ function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://blog-api-production-3d1f.up.railway.app/api/posts", {
-      mode: "cors",
-    })
+    fetch(
+      "https://blog-api-production-3d1f.up.railway.app/api/posts/published",
+      {
+        mode: "cors",
+      }
+    )
       .then((response) => {
         if (response.status >= 400) {
           throw new Error("server error");
@@ -23,7 +26,7 @@ function Home() {
       .finally(() => setLoading(false));
   }, []);
   if (loading) return <Loading></Loading>;
-  if (error) return <p>A network error has occured</p>;
+  if (error) return <h1>An error has occured fetching data from the API</h1>;
   return (
     <>
       <h1>Home</h1>
