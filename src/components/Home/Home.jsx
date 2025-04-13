@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-// import styles from "./Home.module.css";
-// import { Link } from "react-router-dom";
+import styles from "./Home.module.css";
+import { Link } from "react-router-dom";
 import Loading from "../Loading/Loading";
 
 function Home() {
@@ -16,7 +16,7 @@ function Home() {
         }
         return response.json();
       })
-      .then((json) => setPosts(json))
+      .then((json) => setPosts(json.posts))
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
   }, []);
@@ -26,6 +26,19 @@ function Home() {
   return (
     <>
       <h1>Home</h1>
+      <div className={styles.posts}>
+        {posts.map((post) => (
+          <article key={post.id} className={styles.post}>
+            <Link to={`posts/${post.id}`}>
+              <h3>{post.title}</h3>
+            </Link>
+            <img
+              src="https://placehold.co/600x400/212121/f5f5f7?text=Blog+post&font=roboto"
+              alt="blog post placeholder image"
+            />
+          </article>
+        ))}
+      </div>
     </>
   );
 }
