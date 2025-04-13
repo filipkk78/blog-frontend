@@ -27,3 +27,11 @@
   background-color: #1e1e2f;
   padding: 2em 16em;
 }
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
