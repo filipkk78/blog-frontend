@@ -13,7 +13,9 @@ function Post() {
   const [pending, setPending] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/posts/${id}`, { mode: "cors" })
+    fetch(`https://blog-api-production-3d1f.up.railway.app/api/posts/${id}`, {
+      mode: "cors",
+    })
       .then((response) => {
         if (response.status >= 400) {
           throw new Error("server error");
@@ -33,7 +35,7 @@ function Post() {
     e.preventDefault();
     const comment = { authorName, content, postId };
     setPending(true);
-    fetch("http://localhost:5000/api/comments", {
+    fetch("https://blog-api-production-3d1f.up.railway.app/api/comments", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(comment),

@@ -9,7 +9,9 @@ function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/posts", { mode: "cors" })
+    fetch("https://blog-api-production-3d1f.up.railway.app/api/posts", {
+      mode: "cors",
+    })
       .then((response) => {
         if (response.status >= 400) {
           throw new Error("server error");
