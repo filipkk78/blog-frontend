@@ -32,7 +32,7 @@ function Home() {
               <h3>{post.title}</h3>
             </Link>
             <img
-              src="https://placehold.co/600x400/212121/f5f5f7?text=Blog+post&font=roboto"
+              src="https://placehold.co/600x400/1e1e2f/f5f5f7?text=Blog+post&font=roboto"
               alt="blog post placeholder image"
             />
           </article>
