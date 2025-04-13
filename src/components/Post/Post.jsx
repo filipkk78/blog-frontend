@@ -26,7 +26,7 @@ function Post() {
       .then((json) => setPost(json.post))
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
-  }, [post]);
+  }, [post, id]);
   if (loading) return <Loading></Loading>;
   if (error) return <h1>Post not found</h1>;
 
