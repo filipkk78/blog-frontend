@@ -42,6 +42,8 @@ function Post() {
       body: JSON.stringify(comment),
     }).then(() => {
       setPending(false);
+      setContent("");
+      setAuthorName("");
     });
   }
 
