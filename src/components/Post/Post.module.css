@@ -16,7 +16,9 @@
 
 .form textarea,
 .form input,
-.form button {
+.form button,
+.displayCommentsBtn {
+  width: 100%;
   border: 2px solid white;
   background-color: rgb(33, 33, 33);
 }
@@ -24,4 +26,8 @@
 .commentAuthor {
   font-size: 1.3rem;
   font-weight: 800;
+}
+
+.displayCommentsBtn {
+  margin-top: 1em;
 }

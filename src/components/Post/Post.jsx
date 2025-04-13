@@ -11,6 +11,7 @@ function Post() {
   const [authorName, setAuthorName] = useState("");
   const [content, setContent] = useState("");
   const [pending, setPending] = useState(false);
+  const [showComments, setShowComments] = useState(false);
 
   useEffect(() => {
     fetch(`https://blog-api-production-3d1f.up.railway.app/api/posts/${id}`, {
@@ -44,42 +45,61 @@ function Post() {
     });
   }
 
+  function displayComments() {
+    setShowComments(true);
+  }
+
   return (
     <>
-      <h1>{post.title}</h1>
-      <p className={styles.content}>{post.content}</p>
-      <h2>Comments</h2>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <label htmlFor="authorName">Name</label>
-        <input
-          type="text"
-          name="authorName"
-          id="authorName"
-          required
-          value={authorName}
-          onChange={(e) => setAuthorName(e.target.value)}
-        />
-        <label htmlFor="content">Content</label>
-        <textarea
-          name="content"
-          id="content"
-          required
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        ></textarea>
-
-        {!pending && <button type="submit">Add comment</button>}
-        {pending && <button disabled>Pending...</button>}
-      </form>
-      {post.comments.map((comment) => (
-        <article key={comment.id}>
-          <div className={styles.commentheader}>
-            <span className={styles.commentAuthor}>{comment.authorName}</span> @
-            {new Date(comment.createdAt).toLocaleString()}
-          </div>
-          <p>{comment.content}</p>
-        </article>
-      ))}
+      <div className="postwrapper">
+        <h1>{post.title}</h1>
+        <p className={styles.content}>{post.content}</p>
+        {showComments && (
+          <section>
+            <h2>Comments</h2>
+            <form onSubmit={handleSubmit} className={styles.form}>
+              <label htmlFor="authorName">Name</label>
+              <input
+                type="text"
+                name="authorName"
+                id="authorName"
+                required
+                value={authorName}
+                onChange={(e) => setAuthorName(e.target.value)}
+              />
+              <label htmlFor="content">Content</label>
+              <textarea
+                name="content"
+                id="content"
+                required
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+              ></textarea>
+              {!pending && <button type="submit">Add comment</button>}
+              {pending && <button disabled>Pending...</button>}
+            </form>
+            {post.comments.map((comment) => (
+              <article key={comment.id}>
+                <div className={styles.commentheader}>
+                  <span className={styles.commentAuthor}>
+                    {comment.authorName}
+                  </span>{" "}
+                  @{new Date(comment.createdAt).toLocaleString()}
+                </div>
+                <p>{comment.content}</p>
+              </article>
+            ))}
+          </section>
+        )}
+        {!showComments && (
+          <button
+            onClick={displayComments}
+            className={styles.displayCommentsBtn}
+          >
+            Display comments
+          </button>
+        )}
+      </div>
     </>
   );
 }
