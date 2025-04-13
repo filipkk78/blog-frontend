@@ -25,7 +25,7 @@ function Post() {
       .finally(() => setLoading(false));
   }, [post]);
   if (loading) return <Loading></Loading>;
-  if (error) return <p>A network error has occured</p>;
+  if (error) return <h1>Post not found</h1>;
 
   const postId = post.id;
 
