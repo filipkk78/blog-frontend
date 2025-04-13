@@ -26,6 +26,9 @@
 .main {
   background-color: #1e1e2f;
   padding: 2em 16em;
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
 
 a {

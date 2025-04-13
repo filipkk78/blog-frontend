@@ -1,0 +1,27 @@
+.content {
+  max-width: 68ch;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-size: 1.2rem;
+}
+
+.form {
+  display: grid;
+  gap: 0.5em;
+}
+
+.form textarea {
+  resize: none;
+}
+
+.form textarea,
+.form input,
+.form button {
+  border: 2px solid white;
+  background-color: rgb(33, 33, 33);
+}
+
+.commentAuthor {
+  font-size: 1.3rem;
+  font-weight: 800;
+}
