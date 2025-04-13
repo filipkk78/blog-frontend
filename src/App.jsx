@@ -3,12 +3,12 @@ import { Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <div className="wrapper">
-      <header>Header</header>
-      <main>
+    <div className={styles.wrapper}>
+      <header className={styles.header}>Header</header>
+      <main className={styles.main}>
         <Outlet />
       </main>
-      <footer>Footer</footer>
+      <footer className={styles.footer}>Footer</footer>
     </div>
   );
 }
