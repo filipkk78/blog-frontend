@@ -1,19 +1,16 @@
 import styles from "./App.module.css";
 import { Outlet } from "react-router-dom";
-import { Link } from "react-router-dom";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
     <div className={styles.wrapper}>
-      <header className={styles.header}>
-        <Link to="/">
-          <h2>Coding blog</h2>
-        </Link>
-      </header>
+      <Header></Header>
       <main className={styles.main}>
         <Outlet />
       </main>
-      <footer className={styles.footer}>Footer</footer>
+      <Footer></Footer>
     </div>
   );
 }

@@ -20,7 +20,6 @@ function Home() {
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
   }, []);
-  console.log(posts);
   if (loading) return <Loading></Loading>;
   if (error) return <p>A network error has occured</p>;
   return (
